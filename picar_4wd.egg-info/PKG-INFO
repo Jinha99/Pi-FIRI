@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: picar-4wd
+Version: 1.1.1
+Summary: PiCar-4WD for Raspberry Pi
+Home-page: https://github.com/sunfounder/picar-4wd
+Author: SunFounder
+Author-email: service@sunfounder.com
+License: GNU
+Description: For SunFounder 4WD Car
+        =======================
+        Library For SunFounder 4WD Car
+        
+Keywords: 4wd raspberry pi car sunfounder
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7

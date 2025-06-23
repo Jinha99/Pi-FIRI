@@ -16,24 +16,19 @@ gs_list = []
 recv_dict = {
     'RC':'forward',
     'GS': "off",
-    'RD':'off',
-    'OA':'off',
-    'OF':'off',
     'TL':['off',400],
     'CD':['off',110],
     'PW':1,
     'SR':0,
     'ST':'off',
-    'US':['on',0],
     'MS':['off',0,0]
 }
 
 send_dict = {
     'GS': [0,0,0],
-    'US':[0,0],
     'MS':[0,0],
     'ST':{'a':1}
-} 
+}
 
 async def recv_server_func(websocket):
     global recv_dict,send_dict
@@ -60,12 +55,7 @@ async def send_server_func(websocket):
         if recv_dict['ST'] == 'on': 
             send_dict['ST'] = pi_read() 
 
-        if  recv_dict['US'][0] =='on':
-            send_dict['US'] = [int(recv_dict['US'][1]),fc.get_distance_at(int(recv_dict['US'][1]))]
-        else:
-            send_dict['US'] = fc.angle_distance
-        
-        if  recv_dict['GS'] =='on': 
+        if  recv_dict['GS'] =='on':
             send_dict['GS'] = gs_list
         await websocket.send(json.dumps(send_dict))
         await asyncio.sleep(0.01)
@@ -89,47 +79,6 @@ async def main_func():
             elif fc.get_line_status(recv_dict['TL'][1],gs_list) == 1:
                 fc.turn_right(recv_dict['PW']) 
 
-        if recv_dict['OA'] == 'on':
-            scan_list = fc.scan_step(35)
-            if scan_list:
-                tmp = scan_list[3:7]
-                if tmp != [2,2,2,2]:
-                    fc.turn_right(recv_dict['PW'])
-                else:
-                    fc.forward(recv_dict['PW'])
-
-        elif recv_dict['OF'] == 'on':
-            scan_list = fc.scan_step(23)
-            
-            if scan_list != False:
-                scan_list = [str(i) for i in scan_list]
-                scan_list = "".join(scan_list)
-                paths = scan_list.split("2")
-                length_list = []
-                for path in paths:
-                    length_list.append(len(path))
-                if max(length_list) == 0:
-                    fc.stop() 
-                else:
-                    i = length_list.index(max(length_list))
-                    pos = scan_list.index(paths[i])
-                    pos += (len(paths[i]) - 1) / 2
-                    delta = len(scan_list) / 3
-                    if pos < delta:
-                        fc.turn_left(recv_dict['PW'])
-                    elif pos > 2 * delta:
-                        fc.turn_right(recv_dict['PW'])
-                    else:
-                        if scan_list[int(len(scan_list)/2-1)] == "0":
-                            fc.backward(recv_dict['PW'])
-                        else:
-                            fc.forward(recv_dict['PW'])
-    
-        elif  recv_dict['RD'] == 'on':
-            fc.scan_step(35)
-      
-        await asyncio.sleep(0.01)
-        
 async def receive_task():
     async with serve(recv_server_func, "*", 8765):
         await asyncio.Future()  # run forever

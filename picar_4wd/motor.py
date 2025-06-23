@@ -21,13 +21,15 @@ class Motor():
             direction = 1
         power = abs(power)
         if power != 0:
-            power = int(power /2 ) + 50
+            power = int(power /2 ) + 20
         power = power
 
-        direction = direction if not self._is_reversed else not direction  
-        self.dir_pin.value(direction)
-            
-        self.pwm_pin.pulse_width_percent(power)
+        direction = direction if not self._is_reversed else not direction
+        try:
+            self.dir_pin.value(direction)
+            self.pwm_pin.pulse_width_percent(power)
+        except OSError as e:
+            print(f"I/O error in Motor.set_power: {e}")
 
 #     def adder_thread(self):
 #         if self._except_power > self._power:

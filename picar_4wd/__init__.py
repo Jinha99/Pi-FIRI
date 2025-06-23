@@ -4,8 +4,6 @@ from .pwm import PWM
 from .adc import ADC
 from .pin import Pin
 from .motor import Motor
-from .servo import Servo
-from .ultrasonic import Ultrasonic 
 from .speed import Speed
 from .filedb import FileDB  
 from .utils import *
@@ -20,8 +18,7 @@ config = FileDB("config")
 left_front_reverse = config.get('left_front_reverse', default_value = False)
 right_front_reverse = config.get('right_front_reverse', default_value = False)
 left_rear_reverse = config.get('left_rear_reverse', default_value = False)
-right_rear_reverse = config.get('right_rear_reverse', default_value = False)    
-ultrasonic_servo_offset = int(config.get('ultrasonic_servo_offset', default_value = 0)) 
+right_rear_reverse = config.get('right_rear_reverse', default_value = False)
 
 # Init motors
 left_front = Motor(PWM("P13"), Pin("D4"), is_reversed=left_front_reverse) # motor 1
@@ -39,13 +36,6 @@ gs0 = ADC('A5')
 gs1 = ADC('A6')
 gs2 = ADC('A7')
 
-# Init Ultrasonic
-us = Ultrasonic(Pin('D8'), Pin('D9'))
-
-# Init Servo
-# print("Init Servo: %s" % ultrasonic_servo_offset)
-
-servo = Servo(PWM("P0"), offset=ultrasonic_servo_offset)
 
 def start_speed_thread():
     # left_front_speed.start()
@@ -79,82 +69,6 @@ def get_line_status(ref,fl_list):#170<x<300
 
     elif fl_list[2] <= ref:
         return 1
-
-########################################################
-# Ultrasonic
-ANGLE_RANGE = 180
-STEP = 18
-us_step = STEP
-angle_distance = [0,0]
-current_angle = 0
-max_angle = ANGLE_RANGE/2
-min_angle = -ANGLE_RANGE/2
-scan_list = []
-
-errors = []
-
-def run_command(cmd=""):
-    import subprocess
-    p = subprocess.Popen(
-        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    result = p.stdout.read().decode('utf-8')
-    status = p.poll()
-    # print(result)
-    # print(status)
-    return status, result
-
-
-def do(msg="", cmd=""):
-    print(" - %s..." % (msg), end='\r')
-    print(" - %s... " % (msg), end='')
-    status, result = eval(cmd)
-    # print(status, result)
-    if status == 0 or status == None or result == "":
-        print('Done')
-    else:
-        print('Error')
-        errors.append("%s error:\n  Status:%s\n  Error:%s" %
-                      (msg, status, result))
-
-def get_distance_at(angle):
-    global angle_distance
-    servo.set_angle(angle)
-    time.sleep(0.04)
-    distance = us.get_distance()
-    angle_distance = [angle, distance]
-    return distance
-
-def get_status_at(angle, ref1=35, ref2=10):
-    dist = get_distance_at(angle)
-    if dist > ref1 or dist == -2:
-        return 2
-    elif dist > ref2:
-        return 1
-    else:
-        return 0
-
-def scan_step(ref):
-    global scan_list, current_angle, us_step
-    current_angle += us_step
-    if current_angle >= max_angle:
-        current_angle = max_angle
-        us_step = -STEP
-    elif current_angle <= min_angle:
-        current_angle = min_angle
-        us_step = STEP
-    status = get_status_at(current_angle, ref1=ref)#ref1
-
-    scan_list.append(status)
-    if current_angle == min_angle or current_angle == max_angle:
-        if us_step < 0:
-            # print("reverse")
-            scan_list.reverse()
-        # print(scan_list)
-        tmp = scan_list.copy()
-        scan_list = []
-        return tmp
-    else:
-        return False
 
 ########################################################
 # Motors

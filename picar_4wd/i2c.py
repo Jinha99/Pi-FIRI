@@ -12,13 +12,36 @@ class I2C(object):
         self._smbus = SMBus(self._bus)
 
     def auto_reset(func):
-        def wrapper(*args, **kw):
-            try:
-                return func(*args, **kw)
-            except OSError:
-                soft_reset()
-                time.sleep(1)
-                return func(*args, **kw)
+        """Decorator to automatically reset the I2C bus on errors.
+
+        The previous implementation only attempted the failing operation once
+        after resetting the controller.  In practice the I2C bus can require a
+        few retries before recovering, so here we try up to ``RETRY`` times
+        before giving up.  Each failure triggers a soft reset and the bus is
+        reinitialised.  The name of the function that failed is printed to aid
+        debugging.
+        """
+
+        def wrapper(self, *args, **kw):
+            last_exc = None
+            for _ in range(self.RETRY):
+                try:
+                    return func(self, *args, **kw)
+                except OSError as e:
+                    last_exc = e
+                    print(
+                        f"I/O error in {func.__name__}: {e}, resetting I2C bus"
+                    )
+                    soft_reset()
+                    try:
+                        self._smbus.close()
+                    except Exception:
+                        pass
+                    self._smbus = SMBus(self._bus)
+                    time.sleep(0.05)
+            # If all retries failed, re-raise the last exception
+            raise last_exc
+
         return wrapper
 
     @auto_reset

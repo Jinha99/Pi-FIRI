@@ -2,7 +2,10 @@
 from .i2c import I2C
 
 class ADC(I2C):
-    ADDR=0x14                   # i2c_address 0x14
+    # Default I2C address of the SunFounder ADC module. Older boards
+    # use 0x14 while newer revisions may respond on 0x15.  When the
+    # default address fails we fall back to 0x15 automatically.
+    ADDR = 0x14
 
     def __init__(self, chn):    # adc channel:"A0, A1, A2, A3, A4, A5, A6, A7"
         super().__init__()
@@ -16,7 +19,14 @@ class ADC(I2C):
         chn = 7 - chn
         self.chn = chn | 0x10          
         self.reg = 0x40 + self.chn
-        # self.bus = smbus.SMBus(1)
+        # Attempt to communicate using the default address.  If it fails
+        # with an I/O error, try the alternative address (0x15).
+        try:
+            self.send([self.chn, 0, 0], self.ADDR)
+            self.recv(1, self.ADDR)
+        except OSError as e:
+            print(f"I/O error in ADC.__init__: {e}, switching to 0x15")
+            self.ADDR = 0x15
         
     def read(self):                     
         self.send([self.chn, 0, 0], self.ADDR)

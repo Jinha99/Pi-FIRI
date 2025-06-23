@@ -12,11 +12,13 @@ user_name = os.popen("ls /home | head -n 1").readline().strip()
 
 def soft_reset():
     from .pin import Pin
+    from .pwm import PWM
     soft_reset_pin = Pin("D16")
     soft_reset_pin.low()
     time.sleep(0.01)
     soft_reset_pin.high()
     time.sleep(0.01)
+    PWM.reinit_all()
 
 def mapping(x,min_val,max_val,aim_min,aim_max):
     x = aim_min + abs((x - min_val) / (max_val- min_val) * (aim_max-aim_min))
@@ -129,7 +131,7 @@ def main():
                 print("Run: `picar-4wd web-example enable/disable` to enable/disable start on boot")
                 os.system(f"sudo python3 /home/{user_name}/picar-4wd/examples/web/start.py")
         elif command == "test":
-            from picar_4wd import forward, get_distance_at, get_grayscale_list,stop
+            from picar_4wd import forward, get_grayscale_list, stop
             if len(sys.argv) >= 3:
                 opt = sys.argv[2]
                 if opt == "motor":
@@ -143,8 +145,6 @@ def main():
                     finally:
                         stop()
                         time.sleep(0.1)
-                elif opt == "servo":
-                    print(get_distance_at(0))
                 elif opt == "grayscale":
                     print(get_grayscale_list())
                 else:
@@ -186,7 +186,6 @@ Usage: picar-4wd test [option]
 
 Options:
     motor      test the motor
-    servo      test the servo
     grayscale  test the grayscale
 
 '''
