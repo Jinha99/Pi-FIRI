@@ -10,7 +10,7 @@ from tensorflow.lite.python.interpreter import Interpreter as TFLiteInterpreter
 from chatbot_helper import DisasterMessageGenerator
 
 # --- Configuration ---
-PI_ADDR = "http://192.168.138.115:8000"
+PI_ADDR = "Flask_주소_입력"
 PI_STREAM_URL = f"{PI_ADDR}/camera"
 PI_TRACK_START_URL = f"{PI_ADDR}/track/start"
 PI_TRACK_STOP_URL = f"{PI_ADDR}/track/stop"
