@@ -53,8 +53,8 @@
 |-----------------------------------|--------------------------------------------------------------|
 | `local/local_server.py`           | Streamlit 기반 대시보드 앱 (영상 처리, 탐지, 센서·모드 제어)     |
 | `local/chatbot_helper.py`         | Upstage LLM 연동: 감지 알림·순찰 보고서 생성                    |
-| `local/model0.tflite`             | EfficientDet-Lite1 화재·연기 탐지 TFLite 모델                  |
-| `local/last_detect.jpg`           | 마지막 감지 시 프레임 저장                                   |
+| `local/model1.tflite`             | EfficientDet-Lite1 화재·연기 탐지 TFLite 모델                  |
+| `local/last_detect.jpg`           | 마지막 감지 시 프레임 저장 (실행 시 생성)                       |
 | `pi_server.py`                    | Flask 서버: 카메라 스트림, PID 주행, ArUco·센서 API 제공        |
 | `picar-4wd/picar_4wd/...`         | 모터·PWM 제어, 센서 인터페이스 등 로봇 제어 기능                |
 
