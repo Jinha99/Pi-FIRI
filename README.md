@@ -122,6 +122,7 @@
 ### 🔍 Streamlit 대시보드
 
 <img src="https://github.com/user-attachments/assets/5b499ac9-8269-4390-b69f-c01ec1625c2a" width="70%" />  
+
 **Streamlit 기반 화재 감지 시스템 초기 화면**
 
 ---
@@ -129,6 +130,7 @@
 ### 🔥 화재 감지 및 경고 메시지 생성
 
 <img src="https://github.com/user-attachments/assets/d7d08d73-97df-44e3-b8b1-3ff5ca8c100b" width="70%" />  
+
 **화재 감지 및 메시지 생성 + 질의 응답**
 
 ---
@@ -136,8 +138,10 @@
 ### 📝 탐지 로그 및 보고서
 
 <img src="https://github.com/user-attachments/assets/59a7df13-dda1-4e61-a853-1f78c9285d8b" width="50%" />  
+
 **Detected Log 예시**
 
 <img src="https://github.com/user-attachments/assets/0787dfdd-06d7-4f78-a490-69096ef90be4" width="60%" />  
+
 **Report 생성 결과**
 
