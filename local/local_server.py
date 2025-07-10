@@ -28,7 +28,7 @@ TARGET_CLASS_ID = 0
 DETECTION_THRESHOLD = 0.5
 DETECTION_DURATION = 1.2  # seconds
 
-TFLITE_MODEL_PATH = "model0.tflite"
+TFLITE_MODEL_PATH = "model1.tflite"
 LAST_DETECT_IMAGE_PATH = os.path.join(os.getcwd(), "last_detect.jpg")
 
 # New: Class names mapping
