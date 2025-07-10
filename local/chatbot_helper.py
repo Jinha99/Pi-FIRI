@@ -5,7 +5,7 @@ from langchain.schema import HumanMessage
 from dotenv import load_dotenv
 
 class DisasterMessageGenerator:
-    # 1. 영어→한글 변환 딕셔너리 추가
+    # 영어→한글 변환 딕셔너리
     DETECTED_TYPE_KOR = {
         "fire": "화재",
         "smoke": "연기"
