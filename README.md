@@ -36,7 +36,7 @@
 
 
 ## 디렉토리 구조
-'''
+```
 .
 ├── local/
 │ ├── local_server.py # Streamlit UI + 제어 로직
@@ -45,7 +45,7 @@
 ├── picar-4wd/ # Picar-4WD 제어 라이브러리
 │ └── picar_4wd/
 └── pi_server.py # Raspberry Pi Flask 서버
-'''
+```
 
 ## 주요 파일 설명
 
