@@ -1,5 +1,5 @@
-# Pi-FIRI: 라즈베리파이 기반 화재 감지 지능형 로봇
-
+# Pi-FIRI: Raspberry Pi-based Fire Robotic Intelligence
+라즈베리파이 기반 화재 감지 지능형 로봇 시스템
 ## 📌 프로젝트 개요
 
 **Pi-FIRI**는 Raspberry Pi 4와 Picar-4WD 로봇 키트를 기반으로, 실시간 영상 스트리밍과 경량 딥러닝 모델(TFLite EfficientDet-Lite1)을 이용해 화재·연기를 탐지하고, 감지 시 자연어 경고 메시지를 생성·전송하는 지능형 감시 시스템입니다.
