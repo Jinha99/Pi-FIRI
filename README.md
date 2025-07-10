@@ -73,8 +73,12 @@
 │ ├── chatbot_helper.py # 화재 감지 메시지·순찰 보고서 생성
 │ └── model1.tflite # EfficientDet-Lite1 화재 감지 모델
 ├── picar-4wd/ # Picar-4WD 제어 라이브러리
-│ └── picar_4wd/
-└── pi_server.py # Raspberry Pi Flask 서버
+│ └── picar_4wd/ # 기본 하드웨어 제어 코드
+└── examples/
+  ├── pi_server.py # Raspberry Pi Flask 서버
+  ├── track_line.py # Line Tracking 테스트 코드
+  ├── move_forward.py # 모터 동작 테스트 코드
+  └── camera_web_stream.py # Pi-cam 송출 테스트 코드
 ```
 
 ## 📄 주요 파일 설명
@@ -90,28 +94,35 @@
 
 
 ## ⚙️ 설치 및 실행
+1. **Picar Setup**  
+    ```bash
+    cd picar-4wd/
+    sudo python3 setup.py install
+    ```
+    자세한 내용은 Picar-4wd documentation 참고:
+    https://docs.sunfounder.com/projects/picar-4wd/en/latest/test_the_modules.html
 
-1. **Raspberry Pi 서버 실행**  
+3. **Raspberry Pi 서버 실행**  
     ```bash
     git clone <repo-url>
     cd <repo-root>
-    pip3 install -r requirements.txt
+    pip3 install -r pi_requirements.txt
     python3 pi_server.py    # 포트 8000
     ```
 
-2. **로컬 PC 대시보드 실행**  
+4. **로컬 PC 대시보드 실행**  
     ```bash
     cd <repo-root>/local
-    pip install -r requirements.txt
+    pip install -r local_requirements.txt
     streamlit run local_server.py  # 기본 포트 8501
     ```
 
-3. **웹 브라우저 접속**  
+5. **웹 브라우저 접속**  
     ```
     http://localhost:8501
     ```
 
-4. **Streamlit 좌측 사이드바**  
+6. **Streamlit 좌측 사이드바**  
     - Tracking Start / Stop  
     - Fire Detection Start / Stop  
     - ArUco Detection Start / Stop  
