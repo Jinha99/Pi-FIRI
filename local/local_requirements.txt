@@ -1,0 +1,6 @@
+streamlit==1.46.1
+opencv-python==4.11.0.86
+numpy==2.1.3
+requests==2.32.4
+pillow==11.3.0
+tensorflow==2.19.0

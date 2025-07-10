@@ -1,0 +1,5 @@
+Flask==3.1.1
+numpy==1.26.4
+picamera==1.13
+opencv-python==4.11.0.86
+Adafruit-DHT==1.4.0
