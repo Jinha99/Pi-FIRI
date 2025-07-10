@@ -121,27 +121,23 @@
 
 ### 🔍 Streamlit 대시보드
 
-![Streamlit 초기 화면](https://github.com/user-attachments/assets/5b499ac9-8269-4390-b69f-c01ec1625c2a)
-**Streamlit 기반 화재 감지 시스템 초기 화면**  
-- 실시간 영상, 센서 값, 속도 조절, 모드 전환 버튼 등 UI 요소 포함
+<img src="https://github.com/user-attachments/assets/5b499ac9-8269-4390-b69f-c01ec1625c2a" width="70%" />  
+**Streamlit 기반 화재 감지 시스템 초기 화면**
 
 ---
 
 ### 🔥 화재 감지 및 경고 메시지 생성
 
-![화재 감지 + 메시지](https://github.com/user-attachments/assets/d7d08d73-97df-44e3-b8b1-3ff5ca8c100b)
-**화재 감지 및 메시지 생성 + 질의 응답**  
-- EfficientDet 모델이 화재·연기를 탐지하고  
-- LLM을 통해 자연어 경고 메시지 생성 및 사용자 질문 응답 수행
+<img src="https://github.com/user-attachments/assets/d7d08d73-97df-44e3-b8b1-3ff5ca8c100b" width="70%" />  
+**화재 감지 및 메시지 생성 + 질의 응답**
 
 ---
 
 ### 📝 탐지 로그 및 보고서
 
-![Detected Log](https://github.com/user-attachments/assets/59a7df13-dda1-4e61-a853-1f78c9285d8b)
-**Detected Log 예시**  
-- 화재 또는 연기 탐지 시점, 위치, 신뢰도 등의 정보 자동 기록 
+<img src="https://github.com/user-attachments/assets/59a7df13-dda1-4e61-a853-1f78c9285d8b" width="50%" />  
+**Detected Log 예시**
 
-![Report 결과](https://github.com/user-attachments/assets/0787dfdd-06d7-4f78-a490-69096ef90be4)
-**Report 생성 결과**  
-- 순찰 경로 및 탐지 요약이 포함된 보고서 자동 생성
+<img src="https://github.com/user-attachments/assets/0787dfdd-06d7-4f78-a490-69096ef90be4" width="60%" />  
+**Report 생성 결과**
+
