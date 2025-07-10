@@ -1,5 +1,5 @@
 # Pi-FIRI: Pi-based Fire Robotic Intelligence
-# 라즈베리파이 기반 화재 감지 지능형 로봇 시스템
+## 라즈베리파이 기반 화재 감지 지능형 로봇 시스템
 
 ## 📌 프로젝트 개요
 
