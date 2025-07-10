@@ -118,3 +118,14 @@
     - Base Speed 조절  
 
 ## 💡 실행 예시
+![image](https://github.com/user-attachments/assets/5b499ac9-8269-4390-b69f-c01ec1625c2a)
+**Streamlit 기반 화재 감지 시스템 초기 화면**
+
+![image](https://github.com/user-attachments/assets/d7d08d73-97df-44e3-b8b1-3ff5ca8c100b)
+**화재 감지 및 메시지 생성 + 질의 응답**
+
+![image](https://github.com/user-attachments/assets/59a7df13-dda1-4e61-a853-1f78c9285d8b)
+**Detected Log 예시**
+
+![image](https://github.com/user-attachments/assets/0787dfdd-06d7-4f78-a490-69096ef90be4)
+**Report 생성 결과**
