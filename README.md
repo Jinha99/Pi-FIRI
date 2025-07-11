@@ -1,9 +1,19 @@
 # Pi-FIRI: Pi-based Fire Robotic Intelligence
-## 라즈베리파이 기반 화재 감지 지능형 로봇 시스템
 
 ## 📌 프로젝트 개요
 
 **Pi-FIRI**는 Raspberry Pi 4와 Picar-4WD 로봇 키트를 기반으로, 실시간 영상 스트리밍과 경량 딥러닝 모델(TFLite EfficientDet-Lite1)을 이용해 화재·연기를 탐지하고, 감지 시 자연어 경고 메시지를 생성·전송하는 지능형 감시 시스템입니다.
+
+**프로젝트 진행 기간**
+
+2025/05/04 ~ 2025/07/11
+
+**팀원 구성**
+
+| 김상우 | 송진하 | 임규원 | 정서영 |
+|:---:|:---:|:---:|:---:|
+| <img src="https://github.com/Underove.png" width="100"/> | <img src="https://github.com/Jinha99.png" width="100"/> | <img src="https://github.com/gwlim3012.png" width="100"/> | <img src="https://github.com/jnalgae.png" width="100"/> |
+| [@Underove](https://github.com/Underove) | [@Jinha99](https://github.com/Jinha99) | [@gwlim3012](https://github.com/gwlim3012) |[@jnalgae](https://github.com/jnalgae) |
 
 **전체 파이프라인**
 ![image](https://github.com/user-attachments/assets/5c2d4fac-9bd7-4da8-b64f-5607d37a35cf)
@@ -32,6 +42,12 @@
 
 
 ## 🚀 핵심 기능
+- **자율 주행 및 순찰**
+  - 바닥 라인을 따라 주행하는 PID 기반 라인트레이싱 제어
+
+  - 주행 중 ArUco 마커를 인식하여 순찰 경로 상의 위치를 파악하고 기록
+
+  - API를 통해 주행 시작/정지 및 순찰 모드를 유연하게 전환 가능
 
 - **실시간 화재·연기 감지**
   - 라즈베리파이 카메라로 전송되는 MJPEG 스트림을 프레임 단위로 수신
@@ -39,13 +55,6 @@
   - 수신된 프레임을 TFLite 모델(EfficientDet-Lite)로 분석하여 화재 또는 연기 객체 탐지
 
   - 동일 객체가 일정 시간 이상(1.2초) 연속으로 감지되면 경고 알림을 트리거
-
-- **자율 주행 및 순찰**
-  - 바닥 라인을 따라 주행하는 PID 기반 라인트레이싱 제어
-
-  - 주행 중 ArUco 마커를 인식하여 순찰 경로 상의 위치를 파악하고 기록
-
-  - API를 통해 주행 시작/정지 및 순찰 모드를 유연하게 전환 가능
 
 - **LLM을 활용한 자연어 경고 및 순찰 보고서 생성, 사용자 Q&A**
   - Upstage Solar Pro2 preview 사용
@@ -81,6 +90,7 @@
   ├── move_forward.py # 모터 동작 테스트 코드
   └── camera_web_stream.py # Pi-cam 송출 테스트 코드
 ```
+
 
 ## 📄 주요 파일 설명
 
@@ -132,28 +142,17 @@
 ## 💡 실행 예시
 
 ### 🔍 Streamlit 대시보드
-
+- Streamlit 기반 화재 감지 시스템 초기 화면
 <img src="https://github.com/user-attachments/assets/5b499ac9-8269-4390-b69f-c01ec1625c2a" width="70%" />  
 
-**Streamlit 기반 화재 감지 시스템 초기 화면**
-
----
-
 ### 🔥 화재 감지 및 경고 메시지 생성
-
+- 화재 감지 및 메시지 생성 + 질의 응답
 <img src="https://github.com/user-attachments/assets/d7d08d73-97df-44e3-b8b1-3ff5ca8c100b" width="70%" />  
 
-**화재 감지 및 메시지 생성 + 질의 응답**
-
----
-
 ### 📝 탐지 로그 및 보고서
-
+- Detected Log 예시
 <img src="https://github.com/user-attachments/assets/59a7df13-dda1-4e61-a853-1f78c9285d8b" width="50%" />  
 
-**Detected Log 예시**
-
+- Report 생성 결과
 <img src="https://github.com/user-attachments/assets/0787dfdd-06d7-4f78-a490-69096ef90be4" width="60%" />  
-
-**Report 생성 결과**
 
