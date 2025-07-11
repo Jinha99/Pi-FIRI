@@ -157,4 +157,5 @@
 <img src="https://github.com/user-attachments/assets/0787dfdd-06d7-4f78-a490-69096ef90be4" width="60%" />  
 
 ## ▶️ 데모 영상
-(https://www.youtube.com/watch?v=3GLE6odzigI)
+[![Video Label](http://img.youtube.com/vi/3GLE6odzigI/0.jpg)]
+(https://www.youtu.be/3GLE6odzigI)
