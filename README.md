@@ -158,4 +158,4 @@
 
 ## ▶️ 데모 영상
 [![Video Label](http://img.youtube.com/vi/3GLE6odzigI/0.jpg)]
-[(https://www.youtu.be/3GLE6odzigI)](https://www.youtube.com/watch?v=3GLE6odzigI)
+[[(https://www.youtu.be/3GLE6odzigI)](https://www.youtube.com/watch?v=3GLE6odzigI)](https://www.youtube.com/watch?v=3GLE6odzigI)
